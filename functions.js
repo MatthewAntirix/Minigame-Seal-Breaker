@@ -4,6 +4,20 @@
 
 let click = 0
 let init_status = true
+let gem_sound = new Audio('./sounds/gem.wav')
+let win_sound = new Audio('./sounds/win.wav')
+let bg_sound = new Audio('./sounds/background.wav')
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Background sound
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function background_sound() {
+    bg_sound.loop = true
+    bg_sound.play()
+} // END
 
 
 
@@ -17,6 +31,7 @@ function init(row_count, column_count, size) {
         document.getElementById('playground').style.display = "inline-block"
         document.getElementById('menu').style.display = "none"
         create_grid(row_count, column_count, size)
+        background_sound()
     }
 } // Initialization END
 
@@ -157,6 +172,7 @@ function create_tile(row_id, column_id, row_count, column_count, size) {
             // Main target - EMPTY
             if(toggle == 0) {
                 toggle_content = document.querySelector(`.tile_${row_id}_${column_id}`).innerHTML = gem 
+                gem_sound.play()
                 
                 // Row upper target
                     row_up(row_id, column_id)
@@ -172,6 +188,7 @@ function create_tile(row_id, column_id, row_count, column_count, size) {
             // Main target - GEM
             } else if (toggle == 1) {
                 toggle_content = document.querySelector(`.tile_${row_id}_${column_id}`).innerHTML = empty 
+                gem_sound.play()
 
                 // Row upper target
                     row_up(row_id, column_id)
@@ -183,7 +200,10 @@ function create_tile(row_id, column_id, row_count, column_count, size) {
                     column_right(row_id, column_id)
             
 
+
+            } 
         
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
             // Win game
@@ -214,6 +234,7 @@ function create_tile(row_id, column_id, row_count, column_count, size) {
                     document.getElementById(`click`).innerHTML = `Turn  ${click}`
 
                     init_status = false
+                    win_sound.play()
                 }
             
 
@@ -225,3 +246,5 @@ function create_tile(row_id, column_id, row_count, column_count, size) {
     }) // Add tile listener END
 
 } // Creating empty tile END
+
+
