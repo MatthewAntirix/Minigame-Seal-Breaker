@@ -1,2 +1,3 @@
 
-create_grid(5,5);
+create_grid(3,3);
+

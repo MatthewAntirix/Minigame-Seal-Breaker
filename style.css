@@ -5,8 +5,46 @@
     box-sizing:         border-box;
     }
 
-img {
-    width:              200px;
-    height:             200px;
-    background-image:   url(./images/tile.jpg);
+#wrapper {
+    width:              100vw;
+    height:             100vh;
+    text-align:         center;
+    background-image:   url(./images/background.jpg);
+    background-repeat:  no-repeat;
+    background-size:    100% 100%;
     }
+
+    #playground {
+        position:           relative;
+        top:                50%;
+        transform:          translateY(-50%);
+        display:            inline-block;
+        border:             2px solid #000;
+        }
+
+        #playground div {
+            height:             120px;
+            }
+
+            img {
+                width:              120px;
+                height:             100%;
+                background-image:   url(./images/tile.jpg);
+                background-repeat:  no-repeat;
+                background-size:    100% 100%;
+                border:             2px solid #000;
+                }
+
+            .toggle {
+                display:            none;
+                }
+
+
+
+
+
+
+
+
+
+
