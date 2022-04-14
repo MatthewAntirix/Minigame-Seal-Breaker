@@ -1,3 +1,42 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Global variables
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let click = 0
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Initialization
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function init(row_count, column_count) {
+    if(!document.querySelector(`.init`)) {
+        document.getElementById('playground').classList.add(`init`)
+        document.getElementById('playground').style.display = "inline-block"
+        document.getElementById('menu').style.display = "none"
+        create_grid(row_count, column_count)
+        
+    } else {
+        console.log(`init`)
+    }
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Reset Game
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function reset() {
+    document.getElementById('playground').classList.remove(`init`)
+    document.getElementById('playground').innerHTML = ""
+    document.getElementById('reset').innerHTML = `<button id="click">Turn  0 </button><button id="reset_btn" class="btn" onclick="reset()">Reset</button>`
+    document.getElementById('playground').style.display = "none"
+    document.getElementById('menu').style.display = "inline-block"
+}
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Creating tiles grid
@@ -48,9 +87,10 @@ function create_tile(row_id, column_id, row_count, column_count) {
     // Add tile listener
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    document.querySelector(`.tile_${row_id}_${column_id}`).addEventListener('click',function(){
+
+    document.querySelector(`.tile_${row_id}_${column_id}`).addEventListener('click',function (){
         let toggle = document.querySelector(`.tile_${row_id}_${column_id}`).textContent
-        let empty = `<img class="img_${row_id}_${column_id}" src="./images/void.png"></img><span class="toggle">0</span>` 
+        let empty = `<img class="img_${row_id}_${column_id}" src="./images/void.png"></img><span class="toggle">0</span>`
         let gem = `<img class="img_${row_id}_${column_id}" src="./images/gem.png"></img><span class="toggle">1</span>`
         let damaged_1
         let damaged_2
@@ -116,7 +156,7 @@ function create_tile(row_id, column_id, row_count, column_count) {
         // Main target - EMPTY
         if(toggle == 0) {
             toggle_content = document.querySelector(`.tile_${row_id}_${column_id}`).innerHTML = gem 
-
+            
             // Row upper target
                 row_up(row_id, column_id)
             // Row lower target
@@ -146,11 +186,45 @@ function create_tile(row_id, column_id, row_count, column_count) {
         } else if (toggle == 2) {
 
         }
+    
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Win game
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        function end() {
+            let grid_array = []
+
+            for (row = 1; row <= row_count; row++) {
+                for (column = 1; column <= column_count; column++) {
+                    let status = document.querySelector(`.tile_${row}_${column}`).textContent
+                    grid_array.push(status)
+                }
+            }
+
+            if(grid_array.includes(`0`) == true) {
+                click++
+                document.getElementById(`click`).innerHTML = `Turn  ${click}`
+
+            } else if (grid_array.includes(`0`) == false) {
+                let cup
+                cup = document.createElement(`span`)
+                cup.classList.add(`cup`)
+                cup.innerHTML = `<img src="./images/gem.png"></img><br><button id="cup">!!! WIN !!!</button>`
+                document.getElementById(`reset`).prepend(cup)
+
+                click++
+                document.getElementById(`click`).innerHTML = `Turn  ${click}`
+
+            }
+           
+
+        } // Win Game END 
+    
+        end()
+        
 
     }) // Add tile listener END
 
 } // Creating empty tile END
-
-
-

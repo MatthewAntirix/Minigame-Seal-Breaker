@@ -11,10 +11,11 @@
     text-align:         center;
     background-image:   url(./images/background.jpg);
     background-repeat:  no-repeat;
-    background-size:    100% 100%;
+    background-size:    150% 150%;
+    background-position: 50% 25%;
     }
 
-    #playground {
+    #playground, #menu {
         position:           relative;
         top:                50%;
         transform:          translateY(-50%);
@@ -22,25 +23,72 @@
         border:             2px solid #000;
         }
 
-        #playground div {
-            height:             120px;
+        #playground {
+            display:            none;
             }
 
-            img {
-                width:              120px;
-                height:             100%;
+            #playground div {
+                height:             120px;
+                }
+
+                img {
+                    width:              120px;
+                    height:             100%;
+                    background-image:   url(./images/tile.jpg);
+                    background-repeat:  no-repeat;
+                    background-size:    100% 100%;
+                    border:             2px solid #000;
+                    }
+
+                .toggle {
+                    display:            none;
+                    }
+        
+        #menu {
+            background-image:   url(./images/tile.jpg);
+            background-repeat:  no-repeat;
+            background-size:    100% 100%;
+            display:            inline-block;
+            border:             5px solid #000;
+            color:              #fff;
+            box-shadow:         1vw 1vw 2vw #000, -1vw -1vw 2vw #000;
+            text-shadow:        3px 3px #000;
+            }
+
+            h1 {
+                margin:             20px;
+                }
+
+            button {
+                width:              200px; 
+                height:             80px;
+                margin:             20px;
                 background-image:   url(./images/tile.jpg);
                 background-repeat:  no-repeat;
                 background-size:    100% 100%;
-                border:             2px solid #000;
+                display:            block;
+                font-size:          20px;
+                font-style:         italic;
+                font-weight:        bold;
+                color:              #fff;
+                border:             4px solid #000;
                 }
 
-            .toggle {
-                display:            none;
+                .btn:hover {
+                    color:              rgb(20, 213, 43);
+                    background-image:   none;
+                    background-color:   rgb(75, 70, 70);
+                    }
+
+                #cup {
+                    color:              red;
                 }
 
-
-
+            #reset {
+                position:           absolute;
+                bottom:             0;
+                right:              0;
+                }
 
 
 
