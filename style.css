@@ -27,18 +27,41 @@
             display:            none;
             }
 
-            #playground div {
+            img {
+                height:             100%;
+                background-image:   url(./images/tile.jpg);
+                background-repeat:  no-repeat;
+                background-size:    100% 100%;
+                border:             2px solid #000;
+                }
+
+            .small {
                 height:             120px;
                 }
 
-                img {
+                .small img {
                     width:              120px;
-                    height:             100%;
-                    background-image:   url(./images/tile.jpg);
-                    background-repeat:  no-repeat;
-                    background-size:    100% 100%;
-                    border:             2px solid #000;
                     }
+
+
+            .medium {
+                height:             80px;
+                }
+
+                .medium img {
+                    width:              80px;
+                    }
+
+
+            .large {
+                height:             60px;
+                }
+
+                .large img {
+                    width:              60px;
+                    }
+
+
 
                 .toggle {
                     display:            none;
@@ -80,8 +103,8 @@
                     background-color:   rgb(75, 70, 70);
                     }
 
-                #cup {
-                    color:              red;
+            #cup {
+                color:              red;
                 }
 
             #reset {
@@ -89,10 +112,3 @@
                 bottom:             0;
                 right:              0;
                 }
-
-
-
-
-
-
-
